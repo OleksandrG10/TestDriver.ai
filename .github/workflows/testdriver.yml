@@ -30,13 +30,12 @@ jobs:
     # TestDriver GitHub App is authorized for your org). Falls back to a TD_API_KEY
     # secret if you set one. Exports TD_API_KEY for the test step below.
     - name: Authenticate to TestDriver
-      uses: testdriverai/action@canary
+      uses: testdriverai/action@stable
       with:
-        channel: canary
         api-key: ${{ secrets.TD_API_KEY }}
 
     - name: Run TestDriver.ai tests
-      run: vitest run
+      run: npx vitest run
 
     - name: Upload test results
       if: always()
